@@ -1,0 +1,151 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  color: #f9f9f9;
+}
+
+h1 {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.card {
+  padding: 2em;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+video {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bottom-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.emotions {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: grid;
+  gap: 0.15rem;
+  font-size: 0.9em;
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  overflow: hidden;
+  padding: 0.25rem;
+}
+
+.emotion-item {
+  position: relative;
+}
+
+.emotion-text {
+  padding: 0.25rem 1rem;
+}
+.emotion-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  width: 0%;
+  transition: all 0.25s ease-in-out;
+}
+
+.action-btn {
+  padding: 0.5rem 1rem;
+  background: red;
+  border: 0.5rem solid #777;
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+  text-transform: capitalize;
+  outline: none;
+}
+
+.emoji {
+  font-size: 3em;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
