@@ -3,6 +3,7 @@ import * as faceapi from "face-api.js";
 class Emotion {
   private videoEL: HTMLVideoElement;
   private containerEL: HTMLDivElement;
+  private canvas: HTMLCanvasElement | null;
   private callback: Function | null;
   private intervalRef: any;
 
@@ -14,6 +15,7 @@ class Emotion {
     if (!contEL) throw new Error("No container element found");
     this.containerEL = contEL as HTMLDivElement;
     this.callback = callback;
+    this.canvas = null;
   }
 
   private async loadModel() {
@@ -35,7 +37,6 @@ class Emotion {
         video: true,
       };
       const stream = await navigator.mediaDevices.getUserMedia(options);
-
       this.videoEL.srcObject = stream;
       return true;
     } catch (error) {
@@ -53,10 +54,15 @@ class Emotion {
   async stop() {
     this.videoEL.removeEventListener("play", this.onVideoPlay.bind(this));
     clearInterval(this.intervalRef);
+    this.canvas?.remove();
+    this.canvas = null;
   }
 
   private onVideoPlay() {
-    const canvas = faceapi.createCanvasFromMedia(this.videoEL);
+    if (!this.canvas) this.canvas = faceapi.createCanvasFromMedia(this.videoEL);
+
+    const canvas = this.canvas;
+
     this.containerEL.append(canvas);
     faceapi.matchDimensions(canvas, this.getVideoDimensions());
     this.intervalRef = setInterval(() => {

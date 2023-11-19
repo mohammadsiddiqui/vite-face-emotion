@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <h1>Lets check out your Emotion</h1>
+    <div class="text-center" v-if="!ready">Loading....</div>
     <div id="app-container">
       <video id="video" autoplay></video>
       <div class="bottom-container" v-if="ready">
@@ -10,10 +11,11 @@
             <div class="emotion-bg" :style="getItemStyle(em)"></div>
           </div>
         </div>
-        <button class="action-btn"></button>
+        <button class="action-btn play" v-if="isPaused" @click="start"></button>
+        <button class="action-btn" v-else @click="close"></button>
 
-        <transition name="slide-fade" mode="out-in">
-          <div class="emoji" :key="emoji" v-if="emoji">{{ emoji }}</div>
+        <transition name="slide-fade" mode="out-in" appear>
+          <div class="emoji" :key="emoji">{{ emoji }}</div>
         </transition>
       </div>
     </div>
@@ -25,8 +27,8 @@ import { onBeforeUnmount, onMounted, ref } from "vue";
 import useEmotion, { EMOTIONS } from "./useEmotion";
 
 const ready = ref(false);
+const isPaused = ref(false);
 const emoji = ref("");
-
 const data = ref<any>({});
 
 function getItemStyle(emotion: (typeof EMOTIONS)[number]) {
@@ -50,14 +52,24 @@ function updateEmotions(results: any, emotion: (typeof EMOTIONS)[number]) {
   ready.value = true;
 }
 
+function close() {
+  emotion?.stop();
+  isPaused.value = true;
+}
+
+function start() {
+  emotion?.start();
+  isPaused.value = false;
+}
+
 let emotion: ReturnType<typeof useEmotion> | null = null;
 onMounted(async () => {
   emotion = useEmotion(updateEmotions);
-  emotion.start();
+  start();
 });
 
 onBeforeUnmount(() => {
-  if (emotion) emotion.stop();
+  emotion?.stop();
 });
 </script>
 

@@ -43,6 +43,10 @@ h1 {
   line-height: 1.1;
 }
 
+.text-center {
+  text-align: center;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -129,6 +133,10 @@ canvas {
   border-radius: 50%;
   text-transform: capitalize;
   outline: none;
+}
+
+.action-btn.play {
+  background: #00ff00;
 }
 
 .emoji {
