@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <h1>Lets check out your Emotion</h1>
     <div id="app-container">
       <video id="video" autoplay></video>
@@ -62,14 +62,6 @@ onBeforeUnmount(() => {
 </script>
 
 <style>
-#app-container {
-  position: relative;
-  max-width: 786px;
-  width: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }

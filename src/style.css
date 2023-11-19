@@ -37,31 +37,10 @@ body {
 }
 
 h1 {
+  font-size: 2.5rem;
   text-align: center;
   padding: 1rem 0;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
+  line-height: 1.1;
 }
 
 #app {
@@ -69,10 +48,26 @@ button:focus-visible {
   margin: 0 auto;
 }
 
+.page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#app-container {
+  position: relative;
+  max-width: 786px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  flex: 1;
+}
+
 video {
   max-width: 100%;
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 canvas {
@@ -89,7 +84,7 @@ canvas {
   display: flex;
   justify-content: space-between;
   align-items: end;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   z-index: 1;
 }
 
@@ -110,7 +105,9 @@ canvas {
 }
 
 .emotion-text {
-  padding: 0.25rem 1rem;
+  padding: 0.25rem 0.5rem;
+  width: 8rem;
+  font-size: 0.9em;
 }
 .emotion-bg {
   position: absolute;
