@@ -3,7 +3,7 @@
     <h1>Lets check out your Emotion</h1>
     <div class="text-center" v-if="!ready">Loading....</div>
     <div id="app-container">
-      <video id="video" autoplay></video>
+      <video id="video" autoplay muted playsinline></video>
       <div class="bottom-container" v-if="ready">
         <div class="emotions">
           <div class="emotion-item" v-for="em in EMOTIONS">

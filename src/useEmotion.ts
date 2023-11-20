@@ -33,8 +33,10 @@ class Emotion {
   private async startWebCam() {
     try {
       const options = {
-        audio: false,
-        video: true,
+        audio: false, // audio is not included in the video
+        video: { 
+          facingMode: "user", // Request the user-facing camera on devices with multiple camera options
+        },
       };
       const stream = await navigator.mediaDevices.getUserMedia(options);
       this.videoEL.srcObject = stream;
